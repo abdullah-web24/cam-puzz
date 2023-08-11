@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --back-color: rgb(25, 25, 25);
+  --back-color2: rgba(25, 25, 25, 0.9);
+  --text-color: rgb(253, 253, 253);
+}
+
+body {
+  height: 100svh;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  background-color: var(--back-color);
+  color: var(--text-color);
+  overflow: hidden;
+  overscroll-behavior: none;
+
+  #controller {
+    height: 0;
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+
+    .header {
+      height: 0;
+      margin: 2em 1em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+
+      h1 {
+        width: max-content;
+        flex-shrink: 0;
+      }
+      button#menu-btn {
+        height: 36px;
+        width: 36px;
+        padding: 0.4em;
+
+        svg {
+          height: 100%;
+          width: 100%;
+
+          path {
+            fill: var(--back-color);
+          }
+        }
+      }
+    }
+
+    .menu-cont {
+      height: 100svh;
+      width: 100%;
+      background-color: var(--back-color2);
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .menu {
+        width: clamp(270px, 50%, 410px);
+        border: 1px solid var(--text-color);
+        border-radius: 12px;
+        padding: 2em 1em;
+        background-color: var(--back-color);
+
+        button,
+        select {
+          width: 100%;
+        }
+
+        #level {
+          margin-top: 0.5em;
+          margin-bottom: 2em;
+        }
+        #resume-btn {
+          margin-bottom: 2em;
+        }
+      }
+    }
+    .hide {
+      display: none;
+    }
+  }
+  #main-canvas {
+    height: 100%;
+    width: 100%;
+    background-color: var(--back-color);
+    touch-action: none;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  button {
+    display: block;
+    font-size: inherit;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    background-color: var(--text-color);
+    color: var(--back-color);
+    padding: 0.8em 1.5em;
+    cursor: pointer;
+  }
+  select {
+    display: block;
+    font-size: inherit;
+    font-weight: 600;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    background-color: var(--text-color);
+    color: var(--back-color);
+    padding: 0.8em 1.5em;
+    cursor: pointer;
+  }
+}

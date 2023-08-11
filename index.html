@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cam Puzz</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./Styles/main.css" />
+    <script src="./Scripts/main.js" defer></script>
+    <script src="./Scripts/controller.js" defer></script>
+  </head>
+
+  <body>
+    <div id="controller">
+      <div class="header">
+        <h1 class="title">Cam Puzz</h1>
+        <button id="menu-btn" class="hide">
+          <svg viewBox="0 0 20 20" fill="none">
+            <path
+              fill-rule="evenodd"
+              d="M19 4a1 1 0 01-1 1H2a1 1 0 010-2h16a1 1 0 011 1zm0 6a1 1 0 01-1 1H2a1 1 0 110-2h16a1 1 0 011 1zm-1 7a1 1 0 100-2H2a1 1 0 100 2h16z"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <div class="menu-cont">
+        <div id="main-menu" class="menu">
+          <p>Select level</p>
+          <select name="level" id="level">
+            <option value="3" selected>Easy</option>
+            <option value="6">Medium</option>
+            <option value="10">Hard</option>
+          </select>
+          <button id="start-btn">Start</button>
+        </div>
+
+        <div id="game-menu" class="menu hide">
+          <button id="resume-btn">Resume</button>
+          <button id="main-menu-btn">Main menu</button>
+        </div>
+      </div>
+    </div>
+    <canvas id="main-canvas"></canvas>
+  </body>
+</html>
