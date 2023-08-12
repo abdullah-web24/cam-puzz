@@ -21,16 +21,28 @@ const startGame = () => {
   isPlaying = true;
 };
 
-function finishGame() {
-  isPlaying = false;
+const resetEls = () => {
   menuCont.classList.remove("hide");
   mainMenu.classList.remove("hide");
   gameMenu.classList.add("hide");
   menuBtn.classList.add("hide");
+};
+
+function finishGame(canceled = false) {
+  isPlaying = false;
+
+  if (canceled) {
+    resetEls();
+  } else {
+    winSound.play();
+    setTimeout(resetEls, 1300);
+  }
 }
 
 startBtn.onclick = startGame;
-mainMenuBtn.onclick = finishGame;
+mainMenuBtn.onclick = () => {
+  finishGame(true);
+};
 
 resumeBtn.onclick = () => {
   menuCont.classList.add("hide");
