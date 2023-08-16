@@ -29,6 +29,11 @@ const getCamera = async () => {
 
     videoEl.srcObject = media;
     videoEl.play();
+
+    mainCtx.translate(mainCanvas.width, 0);
+    mainCtx.scale(-1, 1);
+    ghostCtx.translate(mainCanvas.width, 0);
+    ghostCtx.scale(-1, 1);
   } catch (err) {
     console.log(`Media error: ${err}`);
   }
