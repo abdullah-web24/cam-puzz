@@ -29,11 +29,6 @@ const getCamera = async () => {
 
     videoEl.srcObject = media;
     videoEl.play();
-
-    mainCtx.translate(mainCanvas.width, 0);
-    mainCtx.scale(-1, 1);
-    ghostCtx.translate(mainCanvas.width, 0);
-    ghostCtx.scale(-1, 1);
   } catch (err) {
     console.log(`Media error: ${err}`);
   }
@@ -443,6 +438,12 @@ const updateCanvas = () => {
 videoEl.onloadeddata = () => {
   resizer();
 
+  // Getting the right camera
+  mainCtx.translate(mainCanvas.width, 0);
+  mainCtx.scale(-1, 1);
+  ghostCtx.translate(mainCanvas.width, 0);
+  ghostCtx.scale(-1, 1);
+
   updateCanvas();
 };
 
@@ -482,8 +483,9 @@ mainCanvas.addEventListener("pointerdown", (e) => {
 
   if (selectedPiece) {
     selectedPiece.offsets = {
-      x: e.clientX - selectedPiece.x,
       y: e.clientY - selectedPiece.y,
+      // The canvas is flipped in x axix
+      x: mainCanvas.width - e.clientX - selectedPiece.x,
     };
 
     framePieces.splice(framePieces.indexOf(selectedPiece), 1);
@@ -492,9 +494,12 @@ mainCanvas.addEventListener("pointerdown", (e) => {
 });
 
 mainCanvas.addEventListener("pointermove", (e) => {
+  console.log(e.clientX);
   if (selectedPiece) {
-    selectedPiece.x = e.clientX - selectedPiece.offsets.x;
     selectedPiece.y = e.clientY - selectedPiece.offsets.y;
+
+    // The canvas is flipped in x axix
+    selectedPiece.x = mainCanvas.width - e.clientX - selectedPiece.offsets.x;
   }
 });
 
